@@ -1,0 +1,37 @@
+{
+  "name": "calendar-tools",
+  "version": "0.3.8",
+  "description": "Calendar object model",
+  "keywords": [
+    "calendar",
+    "google calendar",
+    "fullCalendar",
+    "recurring events",
+    "icalendar",
+    "rfc2445"
+  ],
+  "author": {
+    "name": "Damian Suarez",
+    "email": "damian@learnboost.com"
+  },
+  "homepage": "http://learnboost.github.com/calendar-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LearnBoost/calendar-tools.git"
+  },
+  "devDependencies": {
+    "expresso": "x.x.x"
+  },
+  "main": "./lib/calendar-tools.js",
+  "readme": "# Calendar-tools\n\n  * Recurring events generation\n  * Convertion functions for RFC2445 specification.\n  * Designed to works on Node.JS and browsers.\n\n## Recurring events generation\n\n### Event structure\n\n``` javascript\n  var newEvent = {\n      title: 'My next birthday'\n    , start: new Date(2012, 6, 18, 16)\n    , end: new Date(2012, 6, 18, 23, 30)\n    , allDay: false\n    , frequency: 'year'\n    , recurrence: {\n          'end-by': {\n              after: 4\n            , type: 'never'\n          }\n        , every: 1\n        , exceptions: ['07/18/2012']\n      }\n   }\n```\n\n### Server-Side support\n-----------------------\n\n``` javascript\n// add seed module\nvar Seed = require('./lib/seed');\n\nvar today = new Date();\n\n// defines an event object\nvar myBirthDays = {\n    title: 'Event Instances'\n  , start: new Date(1977, 6, 18, 15, 30, 48)\n  , end: new Date(1977, 6, 22, 15, 30, 48)\n  , allDay: false\n  , frequency: 'year'\n  , recurrence: {\n        'end-by': {\n            type: 'never'\n          , on: today\n        }\n      , every: 1\n      , exceptions: []\n    }\n}\n\n// creates a new seed Object passing event object and options\nvar Seed = new Seed(myBirthDays, {\n    start: new Date(2000, 0, 1)\n  , end: today\n});\n\n// generates ans retrieves all instances by period\nvar instances = Seed.getInstances();\n\nfor (var i = 0; i < instances.length; i++) {\n  var Instance = instances[i];\n  console.log(Instance.start + ': ' + Instance.getNumber() + ' years');\n};\n```\n\n### building client-side library\n\nyou can use 'make build' rule to building client-side library. The generated\nfile will be saved in dist/calendar-tools.js\n\n## License \n\n(The MIT License)\n\nCopyright (c) 2011 Damian Suarez &lt;damian@learnboost.com&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+  "readmeFilename": "Readme.md",
+  "bugs": {
+    "url": "https://github.com/LearnBoost/calendar-tools/issues"
+  },
+  "_id": "calendar-tools@0.3.8",
+  "dist": {
+    "shasum": "810a06af2a4a4238fce3e7f17940eba7d4a17903"
+  },
+  "_from": "calendar-tools@",
+  "_resolved": "https://registry.npmjs.org/calendar-tools/-/calendar-tools-0.3.8.tgz"
+}
